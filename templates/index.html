@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Santa 2025</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="logo-container">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="sparkle" style="transform: scaleX(-1);">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="sparkle">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+        </svg>
+      </div>
+      <h1>Secret Santa 2025</h1>
+      <form action="{{ url_for('draw') }}" method="post">
+        <div class="select-wrapper">
+          <select name="name" required>
+            <option value="" disabled selected>Choose your name!</option> {% for participant in participants %} {% if not participant.drawn %} <option value="{{ participant.name }}">{{ participant.name }}</option> {% endif %} {% endfor %}
+          </select>
+        </div>
+        <button type="submit" class="btn">
+          <span>Continue</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-8-2h4v2h-4V4z" />
+          </svg>
+        </button>
+      </form>
+      <div class="participant-list">
+        <h2>Participants</h2>
+        <ul> {% for participant in participants %} <li>
+            {{ participant.name }} {% if participant.drawn %} <span class="drawn-marker">🎁</span> {% endif %}
+          </li> {% endfor %} </ul>
+      </div>
+      <p class="subtitle">Application written by <a href="https://github.com/ThatSINEWAVE" target="_blank">ThatSINEWAVE</a>
+      </p>
+    </div>
+    <script>
+      function createSnowflakes() {
+        const body = document.querySelector('body');
+        const numberOfSnowflakes = 50;
+        for (let i = 0; i < numberOfSnowflakes; i++) {
+          const snowflake = document.createElement('div');
+          snowflake.classList.add('snowflake');
+          snowflake.innerHTML = '❄';
+          snowflake.style.left = `${Math.random() * 100}vw`;
+          snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
+          snowflake.style.opacity = Math.random();
+          snowflake.style.fontSize = `${Math.random() * 10 + 10}px`;
+          body.appendChild(snowflake);
+        }
+      }
+      window.onload = createSnowflakes;
+    </script>
+  </body>
+</html>
