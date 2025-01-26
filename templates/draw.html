@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Santa 2025</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="draw-result">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 88px; height: 88px; margin: 0 auto 1rem;">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+        </svg>
+        <h1>Congratulations, {{ current_user }},</h1>
+        <p>You will be the Secret Santa for</p>
+        <h1>{{ selected }}!</h1>
+        <p style="font-size: 0.875rem; opacity: 0.75; margin-top: 1rem;">You can take a screenshot of this message to remember it, but keep it a secret to avoid ruining the surprise. :)</p>
+      </div>
+      <a href="{{ url_for('index') }}" class="btn">
+        <span>Go Back</span>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+      </a>
+    </div>
+    <script>
+      function createSnowflakes() {
+        const body = document.querySelector('body');
+        const numberOfSnowflakes = 50;
+        for (let i = 0; i < numberOfSnowflakes; i++) {
+          const snowflake = document.createElement('div');
+          snowflake.classList.add('snowflake');
+          snowflake.innerHTML = '❄';
+          snowflake.style.left = `${Math.random() * 100}vw`;
+          snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
+          snowflake.style.opacity = Math.random();
+          snowflake.style.fontSize = `${Math.random() * 10 + 10}px`;
+          body.appendChild(snowflake);
+        }
+      }
+      window.onload = createSnowflakes;
+    </script>
+  </body>
+</html>
