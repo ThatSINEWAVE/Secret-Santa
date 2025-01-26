@@ -4,6 +4,10 @@
 
 A beautiful, interactive web application for organizing Secret Santa gift exchanges. Built with Flask and modern web technologies, this application provides a seamless and enjoyable experience for managing your holiday gift exchange.
 
+![Secret-Santa-1](https://github.com/user-attachments/assets/db8a5039-b0ce-4e49-b257-18a07b104163)
+
+![Secret-Santa-2](https://github.com/user-attachments/assets/cf69df02-6a01-4a60-9fed-5d8484c7c030)
+
 </div>
 
 ## Features
@@ -29,7 +33,7 @@ A beautiful, interactive web application for organizing Secret Santa gift exchan
 - **Icons**: SVG icons for visual elements
 - **Font**: Inter font family from Google Fonts
 
-## 🎮 How to Use
+## How to Use
 
 1. Open the application in your browser
 2. Select your name from the dropdown menu
